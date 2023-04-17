@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const authRoutes = require('./src/routes/auth')
+const dataLinkShareRoutes = require('./src/routes/dataLinkShare')
 
 app.use(express.json())
 app.use(express.text())
@@ -11,6 +12,7 @@ app.use(cors({
 }))
 
 app.use('/v0.5/users/auth', authRoutes)
+app.use('/v0.5', dataLinkShareRoutes)
 
 const PORT = process.env.PORT || 9007
 
