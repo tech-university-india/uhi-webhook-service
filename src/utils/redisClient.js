@@ -8,7 +8,7 @@ const config = {
 }
 
 const redisClient = redis.createClient(config)
-redisClient
+const client = () => redisClient
   .on('error', (error) => {
     console.log('Redis error: ', error)
   })
@@ -28,7 +28,7 @@ async function deleteKeyRedis (key) {
 }
 
 module.exports = {
-  redisClient,
+  client,
   setKeyValuePairRedis,
   getValueFromKeyRedis,
   deleteKeyRedis

@@ -4,7 +4,7 @@ const app = express()
 const cors = require('cors')
 const authRoutes = require('./src/routes/auth')
 const dataLinkShareRoutes = require('./src/routes/dataLinkShare')
-require('./src/utils/redisClient')
+const { client } = require('./src/utils/redisClient')
 
 app.use(express.json())
 app.use(express.text())
@@ -18,3 +18,4 @@ app.use('/v0.5', dataLinkShareRoutes)
 const PORT = process.env.PORT || 9007
 
 app.listen(PORT, () => console.log(`WebHook Service Started on port ${PORT}`))
+client()
