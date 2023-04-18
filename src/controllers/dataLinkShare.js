@@ -47,6 +47,7 @@ const onFetch = async (req, res) => {
     errorHandlerInRoute(error, req, res)
   }
 }
+
 const onAddContexts = async (req, res) => {
   const { requestId } = req.body
   try {
