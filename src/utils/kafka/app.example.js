@@ -6,7 +6,7 @@ const run = async () => {
   await initConsumer()
 
   // Produce a message
-  const message = { name: 'Kushagra', age: 25 }
+  const message = { name: 'Kushagra', age: 25, city: 'New Delhi', country: 'India' }
   const topic = 'abdm'
   await produceMessage(topic, message)
 

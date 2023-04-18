@@ -1,12 +1,13 @@
 const { Kafka } = require('kafkajs')
-
+require('dotenv').config()
 // const partition = 1
 // const replicationFactor = 1
 
 const kafka = new Kafka({
-  clientId: 'my-producer',
-  brokers: ['localhost:9092']
+  clientId: process.env.KAFKA_PRODUCER_CLIENT_ID,
+  brokers: [process.env.KAFKA_BROKERS]
 })
+
 const producer = kafka.producer()
 
 const initProducer = async () => {
