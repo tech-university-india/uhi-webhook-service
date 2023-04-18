@@ -29,7 +29,6 @@ const onFetch = async (body) => {
   return 'success'
 }
 
-
 const onAddContexts = async (requestId) => {
   // send response to kafka
   console.log('onAddContexts', requestId)
@@ -61,4 +60,3 @@ const discoverConfirm = async (requestId) => {
 }
 
 module.exports = { onNotify, onRequest, onInit, onConfirm, onFetch, onAddContexts, onNotifyMessage, discover, discoverInit, discoverConfirm }
-
