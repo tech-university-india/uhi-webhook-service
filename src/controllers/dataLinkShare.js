@@ -47,5 +47,54 @@ const onFetch = async (req, res) => {
     errorHandlerInRoute(error, req, res)
   }
 }
+const onAddContexts = async (req, res) => {
+  const { requestId } = req.body
+  try {
+    const response = await dataLinkShare.onAddContexts(requestId)
+    res.status(200).send(response)
+  } catch (error) {
+    errorHandlerInRoute(error, req, res)
+  }
+}
 
-module.exports = { onNotify, onRequest, onInit, onConfirm, onFetch }
+const onNotifyMessage = async (req, res) => {
+  const { requestId } = req.body
+  try {
+    const response = await dataLinkShare.onNotifyMessage(requestId)
+    res.status(200).send(response)
+  } catch (error) {
+    errorHandlerInRoute(error, req, res)
+  }
+}
+
+const discover = async (req, res) => {
+  const { requestId } = req.body
+  try {
+    const response = await dataLinkShare.discover(requestId)
+    res.status(200).send(response)
+  } catch (error) {
+    errorHandlerInRoute(error, req, res)
+  }
+}
+
+const discoverInit = async (req, res) => {
+  const { requestId } = req.body
+  try {
+    const response = await dataLinkShare.discoverInit(requestId)
+    res.status(200).send(response)
+  } catch (error) {
+    errorHandlerInRoute(error, req, res)
+  }
+}
+
+const discoverConfirm = async (req, res) => {
+  const { requestId } = req.body
+  try {
+    const response = await dataLinkShare.discoverConfirm(requestId)
+    res.status(200).send(response)
+  } catch (error) {
+    errorHandlerInRoute(error, req, res)
+  }
+}
+
+module.exports = { onNotify, onRequest, onInit, onConfirm, onFetch, onAddContexts, onNotifyMessage, discover, discoverInit, discoverConfirm }

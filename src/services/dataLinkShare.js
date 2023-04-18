@@ -29,4 +29,34 @@ const onFetch = async (body) => {
   return 'success'
 }
 
-module.exports = { onNotify, onRequest, onInit, onConfirm, onFetch }
+const onAddContexts = async (requestId) => {
+  // send response to kafka
+  console.log('onAddContexts', requestId)
+  return 'success'
+}
+
+const onNotifyMessage = async (requestId) => {
+  // send response to kafka
+  console.log('onNotify', requestId)
+  return 'success'
+}
+
+const discover = async (requestId) => {
+  // send response to kafka
+  console.log('discover', requestId)
+  return 'success'
+}
+
+const discoverInit = async (requestId) => {
+  // send response to kafka
+  console.log('discoverInit', requestId)
+  return 'success'
+}
+
+const discoverConfirm = async (requestId) => {
+  // send response to kafka
+  console.log('discoverConfirm', requestId)
+  return 'success'
+}
+
+module.exports = { onNotify, onRequest, onInit, onConfirm, onFetch, onAddContexts, onNotifyMessage, discover, discoverInit, discoverConfirm }
