@@ -4,6 +4,7 @@ const app = express()
 const cors = require('cors')
 const authRoutes = require('./src/routes/auth')
 const dataLinkShareRoutes = require('./src/routes/dataLinkShare')
+require('./src/utils/redisClient')
 
 app.use(express.json())
 app.use(express.text())
