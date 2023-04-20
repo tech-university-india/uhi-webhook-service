@@ -15,8 +15,6 @@ app.use(
 )
 app.use('*', webhook)
 initProducer().catch(console.error)
-// app.use('/v0.5/users/auth', authRoutes)
-// app.use('/v0.5', dataLinkShareRoutes)
 
 const PORT = process.env.PORT || 9007
 

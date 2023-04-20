@@ -1,7 +1,6 @@
 const { Kafka } = require('kafkajs')
+const { allTopics } = require('../../config/config')
 require('dotenv').config()
-// const partition = 1
-// const replicationFactor = 1
 
 const kafka = new Kafka({
   clientId: process.env.KAFKA_PRODUCER_CLIENT_ID,
@@ -9,8 +8,16 @@ const kafka = new Kafka({
 })
 
 const producer = kafka.producer()
-
+const admin = kafka.admin()
 const initProducer = async () => {
+  await admin.connect()
+  const topics = await admin.listTopics()
+  const topicsToCreate = allTopics.filter((topic) => !topics.includes(topic))
+  if (topicsToCreate.length > 0) {
+    await admin.createTopics({
+      topics: topicsToCreate.map((topic) => ({ topic }))
+    })
+  }
   await producer.connect()
 }
 

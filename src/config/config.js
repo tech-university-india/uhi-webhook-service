@@ -13,4 +13,6 @@ const config = {
   }
 }
 
-module.exports = { config }
+const allTopics = ['auth', 'consent']
+
+module.exports = { config, allTopics }
