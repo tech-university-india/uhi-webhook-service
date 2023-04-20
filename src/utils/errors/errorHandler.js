@@ -1,4 +1,4 @@
-const HttpError = require('../errors/httpError')
+const { HttpError } = require('../errors/httpError')
 
 const errorHandlerInRoute = (error, req, res) => {
   if (error instanceof HttpError) {

@@ -2,10 +2,9 @@ const authServices = require('../services/auth')
 const { errorHandlerInRoute } = require('../utils/errors/errorHandler')
 
 const onFetchModes = async (req, res) => {
-  const { auth } = req.body
   //   const { authorization } = req.headers
   try {
-    const response = await authServices.onFetchModes(auth.modes)
+    const response = await authServices.onFetchModes(req.body)
     res.status(200).send(response)
   } catch (error) {
     errorHandlerInRoute(error, req, res)
@@ -13,9 +12,8 @@ const onFetchModes = async (req, res) => {
 }
 
 const onInit = async (req, res) => {
-  const { auth } = req.body
   try {
-    const response = await authServices.onInit(auth.transactionId)
+    const response = await authServices.onInit(req.body)
     res.status(200).send(response)
   } catch (error) {
     errorHandlerInRoute(error, req, res)
@@ -23,9 +21,8 @@ const onInit = async (req, res) => {
 }
 
 const onConfirm = async (req, res) => {
-  const { auth } = req.body
   try {
-    const response = await authServices.onConfirm(auth.accessToken)
+    const response = await authServices.onConfirm(req.body)
     res.status(200).send(response)
   } catch (error) {
     errorHandlerInRoute(error, req, res)
