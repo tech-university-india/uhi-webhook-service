@@ -1,3 +1,5 @@
+const { produceMessage } = require('../utils/kafka/producer')
+
 const onNotify = async (notification) => {
   // send response to kafka
   console.log('notification', notification)
@@ -29,9 +31,9 @@ const onFetch = async (body) => {
   return 'success'
 }
 
-const onAddContexts = async (requestId) => {
-  // send response to kafka
-  console.log('onAddContexts', requestId)
+const onAddContexts = async (response) => {
+  produceMessage('careContext', response)
+  console.log('onAddContexts', response)
   return 'success'
 }
 

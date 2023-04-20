@@ -13,19 +13,20 @@ const initProducer = async () => {
   client.connect()
   client.on('ready', () => {
     console.log('Kafka Client is ready')
-    client.topicExists('auth', (err, res) => {
+    client.createTopics(['auth', 'careContext'], (err, res) => {
       if (err) {
         throw err
       }
-      if (!res) {
-        client.createTopics(['auth'], (err, res) => {
-          if (err) {
-            throw err
-          }
-          console.log('TOPIC CREATED')
-        })
-      }
+      console.log('TOPIC CREATED')
     })
+    // client.topicExists('auth', (err, res) => {
+    //   if (err) {
+    //     throw err
+    //   }
+    //   if (!res) {
+
+    //   }
+    // })
   })
 }
 

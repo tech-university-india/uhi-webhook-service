@@ -49,9 +49,8 @@ const onFetch = async (req, res) => {
 }
 
 const onAddContexts = async (req, res) => {
-  const { requestId } = req.body
   try {
-    const response = await dataLinkShare.onAddContexts(requestId)
+    const response = await dataLinkShare.onAddContexts(req.body)
     res.status(200).send(response)
   } catch (error) {
     errorHandlerInRoute(error, req, res)
