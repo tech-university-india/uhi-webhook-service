@@ -1,4 +1,7 @@
-const { setKeyValuePairRedis, getValueFromKeyRedis } = require('../utils/redisClient')
+const {
+  setKeyValuePairRedis,
+  getValueFromKeyRedis
+} = require('../utils/redisClient')
 const jwt = require('jsonwebtoken')
 const { getPublicKey } = require('../utils/fetch')
 const jwkToPem = require('jwk-to-pem')
@@ -15,7 +18,9 @@ const tokenValidator = async (req, res, next) => {
           const key = await getPublicKey()
           const publicKey = jwkToPem(key.keys[0])
           const decoded = jwt.verify(token, publicKey)
-          if (!decoded) { throw new Error('Invalid token') }
+          if (!decoded) {
+            throw new Error('Invalid token')
+          }
           await setKeyValuePairRedis(token, '1')
           next()
         } catch (error) {

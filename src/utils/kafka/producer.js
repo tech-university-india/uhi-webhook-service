@@ -18,8 +18,6 @@ const produceMessage = async (topic, message) => {
   await producer.send({
     topic,
     messages: [{ value: JSON.stringify(message) }]
-    // partition,
-    // replicationFactor
   })
 }
 
