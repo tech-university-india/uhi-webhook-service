@@ -32,7 +32,7 @@ const onFetch = async (body) => {
 }
 
 const onAddContexts = async (response) => {
-  produceMessage('careContext', response)
+  // produceMessage('careContext', response)
   console.log('onAddContexts', response)
   return 'success'
 }

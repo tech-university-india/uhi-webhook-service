@@ -16,7 +16,7 @@ app.use(express.text())
 //   })
 // )
 
-initProducer()
+// initProducer()
 
 app.use('/v0.5/users/auth', authRoutes)
 app.use('/v0.5', dataLinkShareRoutes)
