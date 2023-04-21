@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const { client } = require('./src/utils/redisClient')
 const { initProducer } = require('./src/utils/kafka/producer')
 const { webhook } = require('./src/controllers/webhook')
 
@@ -14,9 +13,8 @@ app.use(
   })
 )
 app.use('*', webhook)
-initProducer().catch(console.error)
+initProducer().catch(`ErrorMsg: ${console.error}`)
 
 const PORT = process.env.PORT || 9007
 
 app.listen(PORT, () => console.log(`WebHook Service Started on port ${PORT}`))
-client()
