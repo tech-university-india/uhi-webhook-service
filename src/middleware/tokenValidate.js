@@ -16,7 +16,7 @@ const tokenValidator = async (req, res, next) => {
         const publicKey = jwkToPem(key.keys[0])
         const decoded = jwt.verify(token, publicKey)
         if (!decoded) { throw new Error('Invalid token') }
-        setCache(token, '1', 60)
+        setCache(token, '1', 60 * 1000)
         next()
       } catch (error) {
         res.send(error.message)

@@ -11,31 +11,31 @@ const config = {
   '/v0.5/consents/hip/notify': {
     topic: 'consent'
   },
-  '/health-information/hip/request': {
+  '/v0.5/health-information/hip/request': {
     topic: 'consent'
   },
-  '/consent-requests/on-init': {
+  '/v0.5/consent-requests/on-init': {
     topic: 'consent'
   },
-  '/consents/hiu/notify': {
+  '/v0.5/consents/hiu/notify': {
     topic: 'consent'
   },
-  '/consents/on-fetch': {
+  '/v0.5/consents/on-fetch': {
     topic: 'consent'
   },
-  '/links/link/on-add-contexts': {
+  '/v0.5/links/link/on-add-contexts': {
     topic: 'consent'
   },
-  '/patients/status/on-notify': {
+  '/v0.5/patients/sms/on-notify': {
     topic: 'consent'
   },
-  '/care-contexts/discover': {
+  '/v0.5/care-contexts/discover': {
     topic: 'consent'
   },
-  '/links/link/init': {
+  '/v0.5/links/link/init': {
     topic: 'consent'
   },
-  '/links/link/confirm': {
+  '/v0.5/links/link/confirm': {
     topic: 'consent'
   }
 }
