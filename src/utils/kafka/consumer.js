@@ -3,7 +3,7 @@ const { Kafka } = require('kafkajs')
 require('dotenv').config()
 
 const kafka = new Kafka({
-  clientId: process.env.KAFKA_CLIENT_ID,
+  clientId: process.env.KAFKA_CONSUMER_CLIENT_ID,
   brokers: [process.env.KAFKA_BROKERS]
 })
 
@@ -19,7 +19,7 @@ const consumeMessages = async (topic, handler) => {
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
       const value = JSON.parse(message.value)
-      await handler(value)
+      await handler(value, topic, partition)
     }
   })
 }

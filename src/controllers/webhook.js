@@ -8,7 +8,6 @@ const webhook = async (req, res) => {
       body: req.body,
       path: req.baseUrl
     }
-    console.log('hello')
     await requestHandler.request(info)
     res.status(200).send('OK')
   } catch (error) {
