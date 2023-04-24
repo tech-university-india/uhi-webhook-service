@@ -11,8 +11,8 @@ const run = async () => {
   await produceMessage(topic, message)
 
   // Consume messages
-  const handler = (message) => {
-    console.log(`Received message: ${JSON.stringify(message)}`)
+  const handler = (message, topic, partition) => {
+    console.log(`Received message: ${JSON.stringify(message)} from topic - ${topic}/${partition}`)
   }
   await consumeMessages(topic, handler)
 }
