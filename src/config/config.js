@@ -10,9 +10,15 @@ const config = {
   },
   '/v0.5/consents/hip/notify': {
     topic: 'consent'
+  },
+  '/v0.5/links/link/on-add-contexts': {
+    topic: 'careContext'
+  },
+  '/v0.5/patients/sms/on-notify': {
+    topic: 'careContext'
   }
 }
 
-const allTopics = ['auth', 'consent']
+const allTopics = ['auth', 'consent', 'careContext']
 
 module.exports = { config, allTopics }
