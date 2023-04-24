@@ -27,16 +27,16 @@ const config = {
     topic: 'careContext'
   },
   '/v0.5/patients/sms/on-notify': {
-    topic: 'careContex'
+    topic: 'careContext'
   },
   '/v0.5/care-contexts/discover': {
-    topic: 'careContex'
+    topic: 'careContext'
   },
   '/v0.5/links/link/init': {
-    topic: 'careContex'
+    topic: 'careContext'
   },
   '/v0.5/links/link/confirm': {
-    topic: 'careContex'
+    topic: 'careContext'
   }
 }
 
