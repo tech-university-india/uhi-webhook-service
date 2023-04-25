@@ -22,9 +22,10 @@
     "joi": "^17.7.0",
     "jose": "^4.11.4",
     "jsonwebtoken": "^9.0.0",
-    "kafkajs": "^2.2.4",
     "jwk-to-pem": "^2.0.5",
-    "memory-cache": "^0.2.0"
+    "kafkajs": "^2.2.4",
+    "memory-cache": "^0.2.0",
+    "winston": "^3.8.2"
   },
   "devDependencies": {
     "eslint": "^8.33.0",
