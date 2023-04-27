@@ -7,7 +7,6 @@ const kafka = new Kafka({
   brokers: [process.env.KAFKA_BROKERS]
 })
 
-console.log('Kafka Consumer Started', process.env.KAFKA_GROUP_ID)
 const consumer = kafka.consumer({
   groupId: process.env.KAFKA_GROUP_ID
 })
