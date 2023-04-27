@@ -4,13 +4,11 @@ const logger = require('../logging')
 const kafka = new Kafka({
   clientId: process.env.KAFKA_PRODUCER_CLIENT_ID,
   brokers: [process.env.KAFKA_BROKERS]
-
 })
 
 const producer = kafka.producer({
   allowAutoTopicCreation: false,
-  transactionTimeout: 30000,
-  metadataMaxAge: 100
+  transactionTimeout: 30000
 })
 
 const admin = kafka.admin()
