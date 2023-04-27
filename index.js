@@ -26,6 +26,7 @@ app.get('/latest/:id', (req, res) => {
 
 app.use('*', tokenValidator, webhook)
 initProducer().catch((error) => {
+  console.log('Error in connecting to Kafka', error)
   logger.kafkaLogger.error(`Error in connecting to Kafka ${error}`)
 })
 

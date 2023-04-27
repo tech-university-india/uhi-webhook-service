@@ -23,6 +23,7 @@
     "jose": "^4.11.4",
     "jsonwebtoken": "^9.0.0",
     "jwk-to-pem": "^2.0.5",
+    "kafka-node": "^5.0.0",
     "kafkajs": "^2.2.4",
     "memory-cache": "^0.2.0",
     "winston": "^3.8.2"
