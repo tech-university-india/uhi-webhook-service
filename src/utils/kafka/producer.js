@@ -8,16 +8,9 @@ const kafka = new Kafka({
 })
 
 const producer = kafka.producer({
-<<<<<<< HEAD
   allowAutoTopicCreation: false,
   transactionTimeout: 30000,
   metadataMaxAge: 100
-=======
-
-  createPartitioner: () => ({ partition: 0 }),
-  allowAutoTopicCreation: false,
-  transactionTimeout: 30000
->>>>>>> 7309a4d8b94eb0133ab0fe9d2f9bc16da38304ca
 })
 
 const admin = kafka.admin()
