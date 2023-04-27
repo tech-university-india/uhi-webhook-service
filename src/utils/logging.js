@@ -7,8 +7,9 @@ const serverLogger = winston.createLogger({
 })
 
 const kafkaLogger = winston.createLogger({
-  format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
+  format: winston.format.combine(winston.format.timestamp(), winston.format.json(), winston.format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)),
   defaultMeta: { service: 'webhook-service' },
+
   transports: [new winston.transports.File({ filename: 'logs/kafka.log' })]
 })
 

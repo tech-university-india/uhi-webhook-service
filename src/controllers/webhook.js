@@ -10,7 +10,8 @@ const webhook = async (req, res) => {
       path: req.baseUrl
     }
     const responseId = info.body.resp?.requestId ?? null
-    logger.serverLogger.log('Request ID: ', responseId)
+
+    logger.serverLogger.log('Request ID: ' + responseId)
 
     await requestHandler.request(info)
     res.status(200).send('OK')
