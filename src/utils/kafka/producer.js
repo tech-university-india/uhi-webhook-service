@@ -34,9 +34,16 @@ const produceMessage = async (topic, message) => {
     logger.kafkaLogger.info(
       'New Message to be sent to kafka instance topic: ' + topic
     )
+    const id = message.body.resp.requestId
+    const partition = id.slice(id.length - 3) ?? 0
     await producer.send({
       topic,
-      messages: [{ value: JSON.stringify(message) }]
+      messages: [
+        {
+          key: partition,
+          value: JSON.stringify(message)
+        }
+      ]
     })
     logger.kafkaLogger.info('Message sent to instance topic: ' + topic)
   } catch (error) {
