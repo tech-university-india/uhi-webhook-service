@@ -40,7 +40,7 @@ const produceMessage = async (topic, message) => {
       topic,
       messages: [
         {
-          partition,
+          key: partition,
           value: JSON.stringify(message)
         }
       ]
