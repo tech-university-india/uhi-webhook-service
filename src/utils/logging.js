@@ -1,16 +1,25 @@
-const winston = require('winston')
+const winston = require('winston');
 
 const serverLogger = winston.createLogger({
-  format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
-  defaultMeta: { service: 'webhook-service' },
-  transports: [new winston.transports.File({ filename: 'logs/server.log' })]
-})
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
+  defaultMeta: {service: 'webhook-service'},
+  transports: [new winston.transports.File({filename: 'logs/server.log'})],
+});
 
 const kafkaLogger = winston.createLogger({
-  format: winston.format.combine(winston.format.timestamp(), winston.format.json(), winston.format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)),
-  defaultMeta: { service: 'webhook-service' },
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json(),
+    winston.format.printf(
+      info => `${info.timestamp} ${info.level}: ${info.message}`
+    )
+  ),
+  defaultMeta: {service: 'webhook-service'},
 
-  transports: [new winston.transports.File({ filename: 'logs/kafka.log' })]
-})
+  transports: [new winston.transports.File({filename: 'logs/kafka.log'})],
+});
 
-module.exports = { serverLogger, kafkaLogger }
+module.exports = {serverLogger, kafkaLogger};

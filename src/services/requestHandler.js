@@ -1,14 +1,14 @@
-const kafkaHandler = require('../utils/kafka/producer')
+const kafkaHandler = require('../utils/kafka/producer');
 
-const { config } = require('../config/config')
-const { serverLogger } = require('../utils/logging')
+const {config} = require('../config/config');
+const {serverLogger} = require('../utils/logging');
 
-async function request (info) {
-  serverLogger.info('New Request from ABDM' + info)
-  const data = config[info.path]
-  if (!data) throw new Error('Invalid Path')
-  kafkaHandler.produceMessage(data.topic, info)
-  return 'OK'
+async function request(info) {
+  serverLogger.info('New Request from ABDM' + info);
+  const data = config[info.path];
+  if (!data) throw new Error('Invalid Path');
+  kafkaHandler.produceMessage(data.topic, info);
+  return 'OK';
 }
 
-module.exports = { request }
+module.exports = {request};
