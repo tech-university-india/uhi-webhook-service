@@ -12,10 +12,10 @@ const config = {
     topic: 'consent',
   },
   '/v0.5/health-information/hip/request': {
-    topic: 'consent',
+    topic: 'fhir'
   },
   '/v0.5/consent-requests/on-init': {
-    topic: 'consent',
+    topic: 'consentRequest'
   },
   '/v0.5/consents/hiu/notify': {
     topic: 'consent',
@@ -38,11 +38,16 @@ const config = {
   '/links/link/confirm': {
     topic: 'consent',
   },
-
   '/v0.5/links/link/confirm': {
-    topic: 'careContext',
+    topic: 'careContext'
   },
-};
-const allTopics = ['auth', 'consent', 'careContext'];
+  '/v0.5/health-information/hiu/on-request': {
+    topic: 'healthInformation'
+  },
+  '/v1.0/patients/profile/share': {
+    topic: 'share'
+  }
+}
+const allTopics = ['auth', 'consent', 'careContext', 'share', 'consentRequest', 'healthInformation', 'fhir']
 
 module.exports = {config, allTopics};

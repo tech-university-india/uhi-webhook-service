@@ -33,9 +33,9 @@ const produceMessage = async (topic, message) => {
   try {
     logger.kafkaLogger.info(
       'New Message to be sent to kafka instance topic: ' + topic
-    );
-    const id = message.body.resp.requestId;
-    const partition = id.slice(id.length - 3) ?? 0;
+    )
+    const id = message.body.resp?.requestId || message.body.requestId
+    const partition = id.slice(id.length - 3) ?? 0
     await producer.send({
       topic,
       messages: [
