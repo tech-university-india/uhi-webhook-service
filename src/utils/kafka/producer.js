@@ -9,6 +9,11 @@ const kafka = new Kafka({
 const producer = kafka.producer({
   allowAutoTopicCreation: false,
   transactionTimeout: 30000,
+  retry: {
+    initialRetryTime: 1000,
+    retries: 10,
+    restartOnFailure: async () => true,
+  },
 });
 
 const admin = kafka.admin();
@@ -16,7 +21,9 @@ const admin = kafka.admin();
 const initProducer = async () => {
   await admin.connect();
   logger.kafkaLogger.info('Connected to the kafka instance as admin');
+
   const topics = await admin.listTopics();
+
   const topicsToCreate = allTopics.filter(topic => !topics.includes(topic));
   if (topicsToCreate.length > 0) {
     await admin.createTopics({
@@ -26,6 +33,7 @@ const initProducer = async () => {
     logger.kafkaLogger.info(`Created topics ${topicsToCreate.join(', ')}`);
   }
   await producer.connect();
+  await admin.disconnect();
   logger.kafkaLogger.info('Connected to the kafka instance as producer');
 };
 
@@ -33,14 +41,14 @@ const produceMessage = async (topic, message) => {
   try {
     logger.kafkaLogger.info(
       'New Message to be sent to kafka instance topic: ' + topic
-    )
-    const id = message.body.resp?.requestId || message.body.requestId
-    const partition = id.slice(id.length - 3) ?? 0
+    );
+    const id = message.body.resp?.requestId || message.body.requestId;
+    const partition = id.slice(id.length - 2) ?? 0;
     await producer.send({
       topic,
       messages: [
         {
-          key: partition,
+          partition: Number(partition),
           value: JSON.stringify(message),
         },
       ],
