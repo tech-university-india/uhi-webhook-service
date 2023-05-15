@@ -6,7 +6,11 @@ const {initProducer} = require('./src/utils/kafka/producer');
 const {webhook} = require('./src/controllers/webhook');
 const {tokenValidator} = require('./src/middleware/tokenValidate');
 const logger = require('./src/utils/logging');
+
+const PORT = process.env.PORT || 9007;
+
 app.use(express.json());
+
 app.use(express.text());
 
 app.use(
@@ -25,11 +29,13 @@ app.get('/latest/:id', (req, res) => {
 });
 
 app.use('*', tokenValidator, webhook);
-initProducer().catch(error => {
-  console.log('Error in connecting to Kafka', error);
-  logger.kafkaLogger.error(`Error in connecting to Kafka ${error}`);
-});
-
-const PORT = process.env.PORT || 9007;
-
-app.listen(PORT, () => console.log(`WebHook Service Started on port ${PORT}`));
+initProducer()
+  .then(val => {
+    app.listen(PORT, () =>
+      console.log(`WebHook Service Started on port ${PORT}`)
+    );
+  })
+  .catch(error => {
+    console.log('Error in connecting to Kafka', error);
+    logger.kafkaLogger.error(`Error in connecting to Kafka ${error}`);
+  });
