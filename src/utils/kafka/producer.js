@@ -28,7 +28,7 @@ const initProducer = async () => {
   if (topicsToCreate.length > 0) {
     await admin.createTopics({
       waitForLeaders: true,
-      topics: topicsToCreate.map(topic => ({topic})),
+      topics: topicsToCreate.map(topic => ({topic, numPartitions: 31})),
     });
     logger.kafkaLogger.info(`Created topics ${topicsToCreate.join(', ')}`);
   }
