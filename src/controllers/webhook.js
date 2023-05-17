@@ -9,6 +9,7 @@ const webhook = async (req, res) => {
       body: req.body,
       path: req.baseUrl,
     };
+
     const responseId = info.body.resp?.requestId ?? null;
     logger.serverLogger.info('Request ID' + responseId);
 
@@ -20,4 +21,4 @@ const webhook = async (req, res) => {
   }
 };
 
-module.exports = {webhook};
+module.exports = { webhook };

@@ -1,5 +1,5 @@
-const {Kafka} = require('kafkajs');
-const {allTopics} = require('../../config/config');
+const { Kafka } = require('kafkajs');
+const { allTopics } = require('../../config/config');
 const logger = require('../logging');
 const kafka = new Kafka({
   clientId: process.env.KAFKA_PRODUCER_CLIENT_ID,
@@ -28,7 +28,7 @@ const initProducer = async () => {
   if (topicsToCreate.length > 0) {
     await admin.createTopics({
       waitForLeaders: true,
-      topics: topicsToCreate.map(topic => ({topic, numPartitions: 31})),
+      topics: topicsToCreate.map(topic => ({ topic, numPartitions: 31 })),
     });
     logger.kafkaLogger.info(`Created topics ${topicsToCreate.join(', ')}`);
   }
@@ -42,8 +42,10 @@ const produceMessage = async (topic, message) => {
     logger.kafkaLogger.info(
       'New Message to be sent to kafka instance topic: ' + topic
     );
-    const id = message.body.resp?.requestId || message.body.requestId;
-    const partition = id.slice(id.length - 2) ?? 0;
+    const id = message.body.resp?.requestId ?? "00";
+    const slicedId = Number(id.slice(id.length - 2))
+    const partition = Number.isNaN(slicedId) ? 0 : slicedId % 31
+
     await producer.send({
       topic,
       messages: [
@@ -61,4 +63,4 @@ const produceMessage = async (topic, message) => {
   }
 };
 
-module.exports = {initProducer, produceMessage};
+module.exports = { initProducer, produceMessage };
