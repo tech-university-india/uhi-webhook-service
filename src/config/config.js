@@ -46,8 +46,14 @@ const config = {
   },
   '/v1.0/patients/profile/share': {
     topic: 'share'
-  }
+  },
+  '/v1.0/health-information/data-push': {
+    topic: 'dataPush'
+  },
+  '/v0.5/consent-requests/on-status': {
+    topic: 'consentRequestStatus'
+  },
 }
-const allTopics = ['auth', 'consent', 'careContext', 'share', 'consentRequest', 'healthInformation', 'fhir']
+const allTopics = ['auth', 'consent', 'careContext', 'share', 'consentRequest', 'healthInformation', 'fhir', 'dataPush', 'consentRequestStatus']
 
-module.exports = {config, allTopics};
+module.exports = { config, allTopics };
