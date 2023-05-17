@@ -47,9 +47,15 @@ const config = {
   '/v1.0/patients/profile/share': {
     topic: 'share',
   },
+
+  '/v1.0/health-information/data-push': {
+    topic: 'dataPush',
+  },
+  '/v0.5/consent-requests/on-status': {
+    topic: 'consentRequestStatus',
+  },
 };
 const allTopics = Array.from(
   new Set(Object.values(config).map(info => info.topic))
 );
-
 module.exports = {config, allTopics};
