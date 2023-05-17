@@ -12,16 +12,16 @@ const config = {
     topic: 'consent',
   },
   '/v0.5/health-information/hip/request': {
-    topic: 'fhir'
+    topic: 'fhir',
   },
   '/v0.5/consent-requests/on-init': {
-    topic: 'consentRequest'
+    topic: 'consentRequest',
   },
   '/v0.5/consents/hiu/notify': {
-    topic: 'consent',
+    topic: 'hiu-consent-artifacts',
   },
   '/v0.5/consents/on-fetch': {
-    topic: 'consent',
+    topic: 'fetch-server-status',
   },
   '/v0.5/links/link/on-add-contexts': {
     topic: 'careContext',
@@ -39,15 +39,17 @@ const config = {
     topic: 'consent',
   },
   '/v0.5/links/link/confirm': {
-    topic: 'careContext'
+    topic: 'careContext',
   },
   '/v0.5/health-information/hiu/on-request': {
-    topic: 'healthInformation'
+    topic: 'hiu-health-information-request',
   },
   '/v1.0/patients/profile/share': {
-    topic: 'share'
-  }
-}
-const allTopics = ['auth', 'consent', 'careContext', 'share', 'consentRequest', 'healthInformation', 'fhir']
+    topic: 'share',
+  },
+};
+const allTopics = Array.from(
+  new Set(Object.values(config).map(info => info.topic))
+);
 
 module.exports = {config, allTopics};
