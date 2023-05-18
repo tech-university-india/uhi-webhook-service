@@ -14,6 +14,7 @@ const webhook = async (req, res) => {
     logger.serverLogger.info('Request ID' + responseId);
 
     await requestHandler.request(info);
+    if(!res.headersSent)
     res.status(200).send('OK');
   } catch (error) {
     logger.serverLogger.error(error);
