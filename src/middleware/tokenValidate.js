@@ -2,9 +2,12 @@ const {setCache, getCache} = require('../utils/mcache');
 const jwt = require('jsonwebtoken');
 const {getPublicKey} = require('../utils/fetch');
 const jwkToPem = require('jwk-to-pem');
+const {config} = require('../config/config');
 
 const tokenValidator = async (req, res, next) => {
-  
+  if (req.baseUrl === '/v1.0/health-information/data-push') {
+    next();
+  }
   const {authorization} = req.headers;
   if (authorization) {
     const token = authorization.split(' ')[1];
