@@ -9,10 +9,10 @@ const config = {
     topic: 'auth',
   },
   '/v0.5/consents/hip/notify': {
-    topic: 'consent',
+    topic: 'hip-consent-notify',
   },
   '/v0.5/health-information/hip/request': {
-    topic: 'fhir',
+    topic: 'send-data-to-hiu',
   },
   '/v0.5/consent-requests/on-init': {
     topic: 'consentRequest',
@@ -21,7 +21,7 @@ const config = {
     topic: 'hiu-consent-artifacts',
   },
   '/v0.5/consents/on-fetch': {
-    topic: 'fetch-server-status',
+    topic: 'hiu-fetch-server-status',
   },
   '/v0.5/links/link/on-add-contexts': {
     topic: 'careContext',
@@ -49,7 +49,7 @@ const config = {
   },
 
   '/v1.0/health-information/data-push': {
-    topic: 'dataPush',
+    topic: 'hiu-data-push',
   },
   '/v0.5/consent-requests/on-status': {
     topic: 'consentRequestStatus',

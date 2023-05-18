@@ -6,7 +6,7 @@ const serverLogger = winston.createLogger({
     winston.format.json()
   ),
   defaultMeta: {service: 'webhook-service'},
-  transports: [new winston.transports.File({filename: 'logs/server.log'})],
+  transports: [new winston.transports.File({filename: 'logs/server.log'}), new winston.transports.Console],
 });
 
 const kafkaLogger = winston.createLogger({
@@ -19,7 +19,7 @@ const kafkaLogger = winston.createLogger({
   ),
   defaultMeta: {service: 'webhook-service'},
 
-  transports: [new winston.transports.File({filename: 'logs/kafka.log'})],
+  transports: [new winston.transports.File({filename: 'logs/kafka.log'}), new winston.transports.Console],
 });
 
 module.exports = {serverLogger, kafkaLogger};

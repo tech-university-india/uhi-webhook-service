@@ -4,6 +4,7 @@ const {getPublicKey} = require('../utils/fetch');
 const jwkToPem = require('jwk-to-pem');
 
 const tokenValidator = async (req, res, next) => {
+  
   const {authorization} = req.headers;
   if (authorization) {
     const token = authorization.split(' ')[1];
