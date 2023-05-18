@@ -3,10 +3,13 @@ const jwt = require('jsonwebtoken');
 const {getPublicKey} = require('../utils/fetch');
 const jwkToPem = require('jwk-to-pem');
 const {config} = require('../config/config');
+const {serverLogger} = require('../utils/logging');
 
 const tokenValidator = async (req, res, next) => {
   if (req.baseUrl === '/v1.0/health-information/data-push') {
+    serverLogger.info('New Request on the Data Push URL');
     next();
+    return;
   }
   const {authorization} = req.headers;
   if (authorization) {
