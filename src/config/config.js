@@ -42,12 +42,11 @@ const config = {
     topic: 'careContext',
   },
   '/v0.5/health-information/hiu/on-request': {
-    topic: 'hiu-health-information-request',
+    topic: 'hiu-health-information-cm-request',
   },
   '/v1.0/patients/profile/share': {
     topic: 'share',
   },
-
   '/v1.0/health-information/data-push': {
     topic: 'hiu-data-push',
   },
@@ -58,4 +57,4 @@ const config = {
 const allTopics = Array.from(
   new Set(Object.values(config).map(info => info.topic))
 );
-module.exports = {config, allTopics};
+module.exports = { config, allTopics };
